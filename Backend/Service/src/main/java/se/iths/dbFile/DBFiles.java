@@ -1,8 +1,10 @@
 package se.iths.dbFile;
 
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "files")
 public class DBFiles {

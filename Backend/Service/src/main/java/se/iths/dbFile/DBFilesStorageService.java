@@ -10,8 +10,11 @@ import java.io.IOException;
 @Service
 public class DBFilesStorageService {
 
-    @Autowired
-    private DBFilesRepository dbFileRepository;
+    private final DBFilesRepository dbFileRepository;
+
+    public DBFilesStorageService(DBFilesRepository dbFileRepository) {
+        this.dbFileRepository = dbFileRepository;
+    }
 
     public DBFiles storeFile(MultipartFile file) {
         // Normalize file name
