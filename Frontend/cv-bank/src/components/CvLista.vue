@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <h1 class="mb-3">Cv-databas</h1>
     <!-- COLLAPS -->
-    <div class="accordion" id="accordionExample">
+    <div class="CVdataBasBox accordion" id="accordionExample">
       <div class="card">
         <div class="card-header" id="headingOne">
           <h2 class="mb-0">
@@ -138,4 +138,10 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 580px){
+  .CVdataBasBox{
+   padding: 0 15px; 
+  }
+}
+
 </style>

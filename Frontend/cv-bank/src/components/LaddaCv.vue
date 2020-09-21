@@ -27,4 +27,9 @@ export default {
   margin-top: 5em;
   padding: 3em;
 }
+@media (max-width: 580px) {
+  .form-container {
+    width: 95%;
+  }
+}
 </style>

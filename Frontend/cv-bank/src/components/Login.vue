@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container mt-5">
-      <h3 class="text-center">Välkommen till IT-Högskolans Cv-databas</h3>
+      <h3 class="text-center title-Login">Välkommen till IT-Högskolans Cv-databas</h3>
       <div class="form-container mx-auto">
         <form>
           <div class="form-group">
@@ -34,5 +34,16 @@ export default {
 
 form {
   padding: 2em;
+}
+
+@media (max-width: 580px) {
+  .title-Login{
+    font-size: 1.8rem;
+  }
+  .form-container {
+    width: 75%;
+    border: 2px solid rgb(110, 3, 3);
+    margin-top: 5em;
+  }
 }
 </style>
