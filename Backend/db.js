@@ -28,5 +28,5 @@ app.post('/', (req, res) => {
 
 
 
-
+app.listen(3000) //Port 8080 ligger för frontend
 connection.end()
