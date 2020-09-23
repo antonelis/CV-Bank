@@ -16,12 +16,11 @@ connection.connect()
 const app = express()
 app.use(cors())
 
-//Get, Post etc.
-app.get('/', (req, res) => {
+//file-controller
+app.get('/downloadFile/{fileId}', (req, res) => {
   //Kod kommer
 })
-
-app.post('/', (req, res) => {
+app.post('/uploadMultipleFiles', (req, res) => {
   //Kod kommer
 })
 
