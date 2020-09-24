@@ -34,7 +34,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td v-for="student in students">{{ student.name }}</td>
+                  <td>kalle</td>
                   <td>
                     <a href="#">Öppna</a>
                   </td>
@@ -49,23 +49,28 @@
 </template>
 
 <script>
-const studentsUrl = "http://localhost:8080/api/v1/students";
 export default {
   name: "CvLista",
 
   data() {
     return {
-      students: [],
+      result: [],
     };
   },
 
   created() {
-    fetch(studentsUrl).then((response) => {
-      return response.json();
-    });
-    then((students) => {
-      this.students = students;
-    });
+    this.fetchData();
+  },
+
+  methods: {
+    fetchData() {
+      fetch("http://localhost:8080/api/v1/students")
+        .then((response) => response.json())
+        .then((result) => {
+          this.students = result;
+          // console.log(result);
+        });
+    },
   },
 };
 </script>
