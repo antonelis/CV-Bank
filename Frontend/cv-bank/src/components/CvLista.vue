@@ -34,9 +34,11 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>kalle</td>
+                  <td v-for="student in students" :key="student.id">
+                    {{ student.firstName }}
+                  </td>
                   <td>
-                    <a href="#">Öppna</a>
+                    <!-- <a href="#">Öppna</a> -->
                   </td>
                 </tr>
               </tbody>
@@ -54,7 +56,7 @@ export default {
 
   data() {
     return {
-      result: [],
+      students: [],
     };
   },
 
@@ -67,8 +69,8 @@ export default {
       fetch("http://localhost:8080/api/v1/students")
         .then((response) => response.json())
         .then((result) => {
+          console.log(result);
           this.students = result;
-          // console.log(result);
         });
     },
   },
