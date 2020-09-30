@@ -17,7 +17,7 @@ import java.net.http.HttpClient;
 import java.util.List;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @EnableEurekaClient
 @Slf4j
 @RestController
@@ -35,13 +35,13 @@ public class StudentsController {
         this.repository = storage;
         this.assembler = studentsModelAssembler;
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping()
     public CollectionModel<EntityModel<Student>> allStudents() {
         log.info("All Students called");
         return assembler.toCollectionModel(repository.findAll());
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<EntityModel<Student>> oneStudent(@PathVariable Integer id) {
         return repository.findById(id)
@@ -49,7 +49,7 @@ public class StudentsController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @PostMapping()
     public ResponseEntity<?> createStudent(@RequestBody Student student) {
         log.info("POST create Person " + student);
@@ -59,7 +59,7 @@ public class StudentsController {
         headers.setLocation(linkTo(StudentsController.class).slash(s.getId()).toUri());
         return new ResponseEntity<>(assembler.toModel(s), headers, HttpStatus.CREATED);
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @DeleteMapping("/{id}")
     ResponseEntity<?> deleteStudent(@PathVariable Integer id) {
         if (repository.existsById(id)) {
@@ -69,7 +69,7 @@ public class StudentsController {
         } else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @PutMapping("/{id}")
     ResponseEntity<EntityModel<Student>> replaceStudent(@RequestBody Student newStudent, @PathVariable Integer id) {
         if (repository.findById(id).isPresent()) {
@@ -90,7 +90,7 @@ public class StudentsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @PatchMapping("/{id}")
     ResponseEntity<Student> modifyStudent(@RequestBody Student newStudent, @PathVariable Integer id) {
         return repository.findById(id).map(student -> {

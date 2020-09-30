@@ -7,10 +7,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @NoArgsConstructor
 @Entity
+@Table(name = "students")
 public class Student {
     @Id @GeneratedValue Integer id;
     String firstName;
